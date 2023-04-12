@@ -1,7 +1,8 @@
 document.addEventListener("DOMContentLoaded", () => {
   document.querySelector('form').addEventListener('submit', (e) => {
     e.preventDefault();
-    buildToDo(document.querySelector("#new-task-description").value)
+    buildToDo(e.target["new-task-description"].value);
+    // buildToDo(document.querySelector("#new-task-description").value)
   })
 });
 
@@ -40,12 +41,18 @@ btn.textContent =  'X';
 let p = document.createElement('p');
 p.textContent = `${toDo }  `;
 
+let li = document.createElement('li');
+li.appendChild(p);
+
+let ul = document.createElement('ul');
+ul.appendChild(li);
+
+
 p.appendChild(select);
 p.appendChild(btn);
 
-
 console.log(p)
-document.querySelector('#tasks').appendChild(p);
+document.querySelector('#tasks').appendChild(ul);
 
 }
 
